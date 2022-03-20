@@ -39,10 +39,37 @@ def find_pattern_in_matrix(matrix, pattern):
     return False
 
 
+# new search
+def find_pattern(matrix, pattern):
+    stop = False
+    result = False
+    for i in range(len(matrix)):
+        if stop:
+            break
+        for j in range(len(matrix[0])):
+            if (len(matrix) - i) < len(pattern):
+                stop = True
+                break
+            if (len(matrix[0]) - j) < len(pattern[0]):
+                break
+            slice_matrix = np.array(matrix)[i:i + len(pattern), j:j + len(pattern[0])]
+            result = is_identical(slice_matrix, np.array(pattern))
+            if result:
+                stop = True
+                break
+    return result
+
+
+def is_identical(a, b):
+    rows, cols = len(a), len(a[0])
+    return all([a[i][j] == b[i][j] for j in range(cols) for i in range(rows)])
+
+
 def rotate_matrix(matrix):
-    trasposed = transpose_matrix(matrix)
-    matrix = np.copy(trasposed)
-    matrix = reverse_matrix(matrix)
+    transposed = transpose_matrix(matrix)
+    matrix = np.copy(transposed)
+    reverse = reverse_matrix(matrix)
+    matrix = np.copy(reverse)
     return matrix
 
 
