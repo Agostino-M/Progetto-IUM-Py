@@ -1,6 +1,7 @@
 import numpy as np
 
 
+# old search
 def explore(matrix, pattern, i, j):
     for row in pattern:
         for count, item in enumerate(row):
@@ -10,13 +11,31 @@ def explore(matrix, pattern, i, j):
     return True
 
 
-def find_pattern_in_matrix(matrix, pattern):
+# old search
+def find_pattern_in_matrixxx(matrix, pattern):
     for i, row in enumerate(matrix):
         for j, item in enumerate(row):
 
             if item == pattern[0][0] and len(matrix) - i >= len(pattern) and len(row) - j >= len(pattern[0]):
+                print("----Explore ", i, j)
                 if explore(matrix, pattern, i, j):
                     return True
+    return False
+
+
+def find_pattern_in_matrix(matrix, pattern):
+    for i in range(len(matrix) - len(pattern)):
+        for j in range(len(matrix[0]) - len(pattern[0]) + 1):
+            submatrix = True
+            for k in range(len(pattern)):
+                for l in range(len(pattern[0])):
+                    if matrix[i + k][j + l] == pattern[k][l]:
+                        print("a[", (i + k), "][", (j + l), "] = b[", k, "][", l, "]")
+                    else:
+                        submatrix = False
+
+            if submatrix:
+                return True
     return False
 
 
