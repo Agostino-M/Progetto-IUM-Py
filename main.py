@@ -1,3 +1,4 @@
+from file_manager import read_pattern_in_file
 from algorithm import rotate_matrix, print_matrix, find_pattern
 
 
@@ -10,13 +11,9 @@ def main():
         [1, 0, 0, 0, 1, 0, 0]
     ]
 
-    # the pattern we need to find
-    pattern = [
-        [0, 0, 1, 0, 0],
-        [0, 1, 1, 1, 0],
-        [1, 1, 1, 1, 1]
-    ]
+    pattern = read_pattern_in_file()
     print_matrix(pattern)
+
     found = find_pattern(matrix, pattern)
     attempt = 0
     while not found and attempt < 3:

@@ -56,9 +56,8 @@ def reverse_matrix(matrix):
 
 
 def print_matrix(matrix):
-    print()
     for i in range(len(matrix)):
-        print()
         for j in range(len(matrix[0])):
             print(matrix[i][j], end=" ")
+        print()
     print()
