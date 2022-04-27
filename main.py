@@ -10,7 +10,7 @@ def main():
     pattern = read_pattern_in_file()
     # print_matrix(pattern)
 
-    found = find_paCreattern(matrix, pattern)
+    found = find_pattern(matrix, pattern)
     attempt = 0
     while not found and attempt < 3:
         pattern = rotate_matrix(pattern)
